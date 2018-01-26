@@ -58,13 +58,13 @@ public class ApiKeys implements Serializable {
     }
 
     /**
-     * Reads a serialized ApiKeys object from a file and deserializes it.
+     * Reads a serialized ApiKeys object from a file and deserializes it. Example of use: ApiKeys ak = ApiKeys.readApiKeysFromFile('filename.dat');
      * @param filename the name of the file the serialized ApiKeys object is stored in
      * @return an ApiKeys object
      * @throws IOException
      * @throws ClassNotFoundException
      */
-    public ApiKeys readApiKeysFromFile (String filename) throws IOException, ClassNotFoundException {
+    public static ApiKeys readApiKeysFromFile (String filename) throws IOException, ClassNotFoundException {
         ObjectInputStream objectInputStream = new ObjectInputStream(new FileInputStream(filename));
 
         ApiKeys apikeys = (ApiKeys) objectInputStream.readObject();
