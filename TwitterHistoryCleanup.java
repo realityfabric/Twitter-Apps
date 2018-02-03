@@ -122,4 +122,21 @@ public class TwitterHistoryCleanup {
 
         return tweetsBeforeDate;
     }
+
+    /**
+     *
+     * @param tweets a list of tweets
+     * @param date a date which all returned tweets will be created after
+     * @return a list of tweets which were created after the date used as an argument
+     */
+    public static List<Status> getTweetsAfterDate (List<Status> tweets, Date date) {
+        List<Status> tweetsAfterDate = new ArrayList();
+        for (int i = 0; i < tweets.size(); i++) {
+            if (tweets.get(i).getCreatedAt().after(date)) {
+                tweetsAfterDate.add(tweets.get(i));
+            }
+        }
+
+        return tweetsAfterDate;
+    }
 }
