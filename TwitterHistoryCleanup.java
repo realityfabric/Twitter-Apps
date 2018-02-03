@@ -1,6 +1,8 @@
 package twitterhistorycleanup;
 
 import java.io.IOException;
+import java.util.ArrayList;
+import java.util.Date;
 import java.util.List;
 import twitter4j.Paging;
 import twitter4j.Status;
@@ -102,5 +104,22 @@ public class TwitterHistoryCleanup {
         }
 
         return tweets;
+    }
+
+    /**
+     *
+     * @param tweets a list of tweets
+     * @param date a date which all returned tweets will be created before
+     * @return a list of tweets which were created before the date used as an argument
+     */
+    public static List<Status> getTweetsBeforeDate (List<Status> tweets, Date date) {
+        List<Status> tweetsBeforeDate = new ArrayList();
+        for (int i = 0; i < tweets.size(); i++) {
+            if (tweets.get(i).getCreatedAt().before(date)) {
+                tweetsBeforeDate.add(tweets.get(i));
+            }
+        }
+
+        return tweetsBeforeDate;
     }
 }
