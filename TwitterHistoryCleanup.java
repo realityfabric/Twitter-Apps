@@ -141,10 +141,21 @@ public class TwitterHistoryCleanup {
         return tweetsAfterDate;
     }
 
+    /**
+     * Converts Calendar objects into Date objects
+     * @param calendar a calendar object which represents the date you would like to instantiate
+     * @return a Date object which represents the same time as the Calendar object used as an argument
+     */
     public static Date calendarToDate (Calendar calendar) {
         return new Date(calendar.getTimeInMillis());
     }
 
+    /**
+     * Takes a list of Status objects and deletes them
+     * @param twitter the Twitter instance you will be deleting tweets from
+     * @param tweets the list of Status objects which will be deleted
+     * @return a list of tweets which threw exceptions while being deleted
+     */
     public static List<Status> deleteTweets (Twitter twitter, List<Status> tweets) {
         List<Status> errorTweets = new ArrayList<>();
 
