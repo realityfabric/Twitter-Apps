@@ -164,7 +164,8 @@ public class TwitterHistoryCleanup {
         int i = 0;
         while (i < tweets.size()) {
             try {
-                System.out.println(twitter.destroyStatus(tweets.get(i).getId()));
+                twitter.destroyStatus(tweets.get(i).getId());
+                System.out.print(".");
             } catch (TwitterException e) {
                 System.out.println(e.getMessage());
                 errorTweets.add(tweets.get(i));
