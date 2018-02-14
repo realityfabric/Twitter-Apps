@@ -179,6 +179,7 @@ public class TwitterHistoryCleanup {
 
     /**
      * Gets all tweets except the latest x tweets, where x is the numberOfTweets argument
+     * @param twitter the Twitter instance you will be gathering tweets from
      * @param numberOfTweets Number of most recent tweets to ignore
      * @return All tweets older than the latest numberOfTweets tweets
      */
