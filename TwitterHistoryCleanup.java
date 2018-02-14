@@ -2,6 +2,7 @@ package twitterhistorycleanup;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.Calendar;
 import java.util.Date;
 import java.util.List;
 import twitter4j.Paging;
@@ -138,5 +139,9 @@ public class TwitterHistoryCleanup {
         }
 
         return tweetsAfterDate;
+    }
+
+    public static Date calendarToDate (Calendar calendar) {
+        return new Date(calendar.getTimeInMillis());
     }
 }
