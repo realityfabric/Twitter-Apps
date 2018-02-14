@@ -3,6 +3,8 @@ package twitterhistorycleanup;
 import java.io.IOException;
 import java.util.ArrayList;
 import java.util.Calendar;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.Date;
 import java.util.List;
 import twitter4j.Paging;
@@ -172,5 +174,22 @@ public class TwitterHistoryCleanup {
         }
 
         return errorTweets;
+    }
+
+    /**
+     * Gets all tweets except the latest x tweets, where x is the numberOfTweets argument
+     * @param numberOfTweets Number of most recent tweets to ignore
+     * @return All tweets older than the latest numberOfTweets tweets
+     */
+    public static List<Status> getTweetsOlderThanNumber (Twitter twitter, int numberOfTweets) throws TwitterException {
+        List<Status> tweets = getAllTweets(twitter);
+
+        Collections.sort(tweets, new Comparator<Status>() {
+            @Override public int compare(Status s1, Status s2) {
+                return s2.getCreatedAt().compareTo(s1.getCreatedAt());
+            }
+        });
+
+        return tweets.subList(numberOfTweets, tweets.size() - 1);
     }
 }
