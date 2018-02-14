@@ -144,4 +144,22 @@ public class TwitterHistoryCleanup {
     public static Date calendarToDate (Calendar calendar) {
         return new Date(calendar.getTimeInMillis());
     }
+
+    public static List<Status> deleteTweets (Twitter twitter, List<Status> tweets) {
+        List<Status> errorTweets = new ArrayList<>();
+
+        int i = 0;
+        while (i < tweets.size()) {
+            try {
+                System.out.println(twitter.destroyStatus(tweets.get(i).getId()));
+            } catch (TwitterException e) {
+                System.out.println(e.getMessage());
+                errorTweets.add(tweets.get(i));
+            } finally {
+                i++;
+            }
+        }
+
+        return errorTweets;
+    }
 }
