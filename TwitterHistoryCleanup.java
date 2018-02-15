@@ -192,6 +192,12 @@ public class TwitterHistoryCleanup {
             }
         });
 
-        return tweets.subList(numberOfTweets, tweets.size());
+        if (tweets.size() > numberOfTweets) {
+            return tweets.subList(numberOfTweets, tweets.size());
+        } else {
+            // if the user has fewer tweets than the number they want to exclude
+            // then return an empty list
+            return new ArrayList<>();
+        }
     }
 }
