@@ -192,6 +192,6 @@ public class TwitterHistoryCleanup {
             }
         });
 
-        return tweets.subList(numberOfTweets, tweets.size() - 1);
+        return tweets.subList(numberOfTweets, tweets.size());
     }
 }
