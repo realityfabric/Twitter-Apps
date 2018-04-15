@@ -24,14 +24,19 @@ public class TwitterInteractions {
 		return thread;
 	}
 
-	public static ArrayList<Status> likeThread (Twitter twitter, long endId, long startId)
+	public static ArrayList<Status> likeThread (Twitter twitter, ArrayList<Status> thread)
 			throws TwitterException {
-		ArrayList<Status> thread = getThread(twitter, endId, startId);
-
 		for (Status s : thread) {
 			twitter.createFavorite(s.getId());
 		}
 
 		return thread;
+	}
+
+	public static ArrayList<Status> likeThread (Twitter twitter, long endId, long startId)
+			throws TwitterException {
+		ArrayList<Status> thread = getThread(twitter, endId, startId);
+
+		return likeThread(twitter, thread);
 	}
 }
